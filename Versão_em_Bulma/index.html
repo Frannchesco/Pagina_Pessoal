@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luiz Francisco | Bulma · Portfólio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body, .navbar, .card, .hero, .section, .footer, .tag, .button, .skill-chip,
+        .navbar-menu, .navbar-item, .title, .subtitle, .card-content, .card-content p,
+        .has-background-link {
+            transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+        }
+
+        body {
+            background-color: #f5f7fc;
+            color: #1e293b;
+        }
+        .navbar, .hero, .card, .box, .footer, .section,
+        .navbar-menu, .has-background-link {
+            background-color: #ffffff !important;
+            color: #1e293b !important;
+        }
+        .navbar-item, .title, .subtitle, .card-content p, .card-content strong, .content p {
+            color: #1e293b !important;
+        }
+        .card {
+            background-color: #ffffff !important;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .hero.is-primary {
+            background: linear-gradient(145deg, #e6f0fa, #d9e6f5) !important;
+        }
+        .hero.is-primary .title,
+        .hero.is-primary .subtitle,
+        .hero.is-primary p {
+            color: #0f172a !important;
+        }
+        .tag {
+            background-color: #eef2ff !important;
+            color: #1e40af !important;
+        }
+        .button.is-light {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            border: 1px solid #cbd5e1;
+        }
+        .button.is-light:hover {
+            background-color: #e2e8f0;
+        }
+        .skill-chip {
+            background: #e2e8f0;
+            color: #0f172a;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .icon-gradient {
+            background: linear-gradient(145deg, #0b5e5e, #00bfa6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .project-card-bulma {
+            transition: transform 0.2s, box-shadow 0.25s;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .project-card-bulma:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
+        }
+        .back-button-fixed {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 1000;
+            border-radius: 60px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .footer {
+            border-top: 1px solid #e2e8f0;
+        }
+        a.navbar-item, a.navbar-item:hover {
+            color: #1e293b !important;
+        }
+        .navbar-burger span {
+            background-color: #1e293b;
+        }
+
+        .skills-section-light {
+            background-color: #f8fafc !important;
+        }
+
+        body.dark-mode {
+            background-color: #0a0c10;
+            color: #e7e9ef;
+        }
+        body.dark-mode .navbar,
+        body.dark-mode .hero,
+        body.dark-mode .card,
+        body.dark-mode .box,
+        body.dark-mode .footer,
+        body.dark-mode .section,
+        body.dark-mode .navbar-menu,
+        body.dark-mode .has-background-link {
+            background-color: #13161f !important;
+            color: #eef2ff !important;
+        }
+        body.dark-mode .navbar-item,
+        body.dark-mode .title,
+        body.dark-mode .subtitle,
+        body.dark-mode .card-content p,
+        body.dark-mode .card-content strong,
+        body.dark-mode .content p {
+            color: #eef2ff !important;
+        }
+        body.dark-mode .card {
+            background-color: #1a1e2a !important;
+            border: 1px solid #2d3348;
+        }
+        body.dark-mode .hero.is-primary {
+            background: linear-gradient(145deg, #0f172a, #0b1120) !important;
+        }
+        body.dark-mode .hero.is-primary .title,
+        body.dark-mode .hero.is-primary .subtitle,
+        body.dark-mode .hero.is-primary p {
+            color: #ffffff !important;
+        }
+        body.dark-mode .tag {
+            background-color: #2a3448 !important;
+            color: #d9e2f5 !important;
+        }
+        body.dark-mode .button.is-light {
+            background-color: #2d374b;
+            color: #f0f3fa;
+            border: none;
+        }
+        body.dark-mode .button.is-light:hover {
+            background-color: #3a455e;
+        }
+        body.dark-mode .skill-chip {
+            background: #1e2a3a;
+            color: #b9f3e6;
+        }
+        body.dark-mode .icon-gradient {
+            background: linear-gradient(145deg, #00bfa6, #0b5e5e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        body.dark-mode .footer {
+            border-top: 1px solid #262e40;
+        }
+        body.dark-mode a.navbar-item,
+        body.dark-mode a.navbar-item:hover {
+            color: #eef2ff !important;
+        }
+        body.dark-mode .navbar-burger span {
+            background-color: #eef2ff;
+        }
+        body.dark-mode .back-button-fixed {
+            background-color: #2d374b;
+            color: white;
+        }
+        body.dark-mode .skills-section-light {
+            background-color: #0f111a !important;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar is-fixed-top shadow">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item is-size-5 has-text-weight-bold" href="#">Chico<span class="has-text-info">·dev</span></a>
+            <a role="button" class="navbar-burger" id="navbarBurger" aria-label="menu">
+                <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-menu" id="navMenu">
+            <div class="navbar-end">
+                <a class="navbar-item" href="#inicio">Início</a>
+                <a class="navbar-item" href="#sobre-bulma">Sobre</a>
+                <a class="navbar-item" href="#skills-bulma">Habilidades</a>
+                <a class="navbar-item" href="#projetos-bulma">Projetos</a>
+                <a class="navbar-item" href="#contato-bulma">Contato</a>
+                <!-- Botão de alternância claro/escuro -->
+                <div class="navbar-item">
+                    <button id="themeToggleBulma" class="button is-small is-rounded is-light">
+                        <span class="icon"><i class="fas fa-moon"></i></span>
+                        <span>Escuro</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section id="inicio" class="hero is-primary is-medium">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered is-multiline">
+                <div class="column is-7">
+                    <h1 class="title is-1">Luiz Francisco <br><span class="has-text-weight-light">Sousa de Jesus</span></h1>
+                    <h2 class="subtitle is-4">Estudante de Ciência da Computação · UFLA <br> Front-end & UX/UI</h2>
+                    <p>Sem experiência profissional, mas com muitos projetos e dedicação para criar interfaces inteligentes. Buscando estágio para aplicar design e desenvolvimento.</p>
+                    <div class="buttons mt-4">
+                        <a href="#projetos-bulma" class="button is-dark is-rounded">Ver projetos <i class="fas fa-arrow-right"></i></a>
+                        <a href="#contato-bulma" class="button is-light is-rounded">Contato</a>
+                    </div>
+                </div>
+                <div class="column is-5 has-text-centered">
+                    <figure class="image is-inline-block">
+                        <img src="fotoPerfil.jpeg" alt="Foto de Luiz Francisco"
+                            style="width: 300px; height: 300px; object-fit: cover; border-radius: 50%; border: 3px solid #cbd5e1;">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="sobre-bulma" class="section">
+    <div class="container">
+        <h2 class="title is-2 has-text-centered mb-5"><span class="has-text-info">●</span> Sobre minha trajetória</h2>
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <div class="card-content">
+                        <i class="fas fa-graduation-cap fa-2x has-text-info mb-3"></i>
+                        <h3 class="title is-5">Formação</h3>
+                        <p>Bacharelando em Ciência da Computação (UFLA) – previsão 2028</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <div class="card-content">
+                        <i class="fas fa-rocket fa-2x has-text-info mb-3"></i>
+                        <h3 class="title is-5">Objetivo & Paixão</h3>
+                        <p>Unir front-end e UX/UI para criar experiências digitais acessíveis e agradáveis. Tenho familiaridade com Java, C++ e aprendizado contínuo em JavaScript avançado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills-bulma" class="section skills-section-light">
+    <div class="container">
+        <h2 class="title is-2 has-text-centered mb-5">Habilidades Técnicas</h2>
+        <div class="tags is-centered are-medium mb-5" style="justify-content: center; gap: 0.75rem;">
+            <span class="skill-chip"><i class="fab fa-java"></i> Java</span>
+            <span class="skill-chip"><i class="fas fa-code"></i> C++</span>
+            <span class="skill-chip"><i class="fab fa-js"></i> JavaScript</span>
+            <span class="skill-chip"><i class="fab fa-html5"></i> HTML/CSS</span>
+            <span class="skill-chip"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+            <span class="skill-chip"><i class="fas fa-wind"></i> Bulma</span>
+            <span class="skill-chip"><i class="fas fa-paint-brush"></i> Figma</span>
+            <span class="skill-chip"><i class="fas fa-database"></i> SQL</span>
+        </div>
+    </div>
+</section>
+
+<section id="projetos-bulma" class="section">
+    <div class="container">
+        <h2 class="title is-2 has-text-centered mb-5">Projetos criativos</h2>
+        <div class="columns is-multiline">
+            <div class="column is-4">
+                <div class="card project-card-bulma">
+                    <div class="card-content">
+                        <i class="fas fa-tasks fa-2x has-text-info"></i>
+                        <h3 class="title is-5 mt-3">FlowTask</h3>
+                        <p>Aplicativo de tarefas com vanilla JavaScript e localStorage. Design focado em UX com alternância claro/escuro e categorias.</p>
+                        <span class="tag is-light mt-2">JS</span>
+                        <span class="tag is-light mt-2">CSS Grid</span>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4">
+                <div class="card project-card-bulma">
+                    <div class="card-content">
+                        <i class="fas fa-chalkboard-user fa-2x has-text-info"></i>
+                        <h3 class="title is-5 mt-3">StudySync · UI Kit</h3>
+                        <p>Protótipo de alta fidelidade no Figma para plataforma de estudos colaborativos. Componentes e design system.</p>
+                        <span class="tag is-light mt-2">Figma</span>
+                        <span class="tag is-light mt-2">UX Research</span>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4">
+                <div class="card project-card-bulma">
+                    <div class="card-content">
+                        <i class="fas fa-gamepad fa-2x has-text-info"></i>
+                        <h3 class="title is-5 mt-3">TacticalRPG (Java)</h3>
+                        <p>Jogo baseado em turnos em Java, aplicando herança, polimorfismo e estrutura de dados. Projeto acadêmico.</p>
+                        <span class="tag is-light mt-2">Java</span>
+                        <span class="tag is-light mt-2">OOP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contato-bulma" class="section has-background-link">
+    <div class="container has-text-centered">
+        <h2 class="title is-3">Vamos criar algo incrível?</h2>
+        <p class="subtitle is-6 mt-2">luiz.jesus2@estudante.ufla.br · disponível para networking e oportunidades</p>
+        <div class="buttons is-centered mt-4">
+            <a href="https://github.com/frannchesco" class="social-icon" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+            <a href="https://www.linkedin.com/in/luiz-francisco-b01542397" class="social-icon" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>      
+            <a href="mailto:luiz.jesus2@estudante.ufla.br" class="social-icon"><i class="fas fa-envelope fa-2x"></i></a>
+            <a href="https://www.instagram.com/luiz__francisco/" class="social-icon" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>        </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer has-text-centered">
+    <p class="is-size-7">© 2026 Luiz Francisco Sousa de Jesus · Desenvolvido com Bulma · Alternância claro/escuro · Projeto Web GAC116</p>
+</footer>
+
+<a href="../index.html" class="button is-dark is-rounded back-button-fixed">
+    <span class="icon"><i class="fas fa-arrow-left"></i></span>
+    <span>Voltar</span>
+</a>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const burger = document.getElementById('navbarBurger');
+        const menu = document.getElementById('navMenu');
+        if (burger && menu) {
+            burger.addEventListener('click', () => {
+                burger.classList.toggle('is-active');
+                menu.classList.toggle('is-active');
+            });
+        }
+
+        const toggleBtn = document.getElementById('themeToggleBulma');
+        const body = document.body;
+        const iconSpan = toggleBtn.querySelector('.icon i');
+        const textSpan = toggleBtn.querySelector('span:last-child');
+
+        const savedTheme = localStorage.getItem('bulma-theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            iconSpan.className = 'fas fa-sun';
+            textSpan.innerText = 'Claro';
+        } else {
+            body.classList.remove('dark-mode');
+            iconSpan.className = 'fas fa-moon';
+            textSpan.innerText = 'Escuro';
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('bulma-theme', isDark ? 'dark' : 'light');
+            if (isDark) {
+                iconSpan.className = 'fas fa-sun';
+                textSpan.innerText = 'Claro';
+            } else {
+                iconSpan.className = 'fas fa-moon';
+                textSpan.innerText = 'Escuro';
+            }
+        });
+    });
+</script>
+</body>
+</html>
