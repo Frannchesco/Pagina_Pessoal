@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Luiz Francisco | Escolha a versão</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+        .choice-container {
+            max-width: 1200px;
+            width: 100%;
+        }
+        .header-bar {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1.5rem;
+        }
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 60px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+        .title-main {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .title-main h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d1b2, #3b82f6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .title-main p {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+        .cards-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .version-card {
+            flex: 1;
+            min-width: 280px;
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            transition: background-color 0.25s, border-color 0.25s, box-shadow 0.25s;
+        }
+        .version-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 40px -16px rgba(0, 0, 0, 0.2);
+        }
+        .card-header {
+            padding: 2rem 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 2px solid;
+            transition: border-color 0.25s;
+        }
+        .card-header i {
+            font-size: 3rem;
+            background: linear-gradient(145deg, #00d1b2, #3b82f6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .card-header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0.75rem 0 0.25rem;
+        }
+        .badge-framework {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .btn-choice {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            padding: 0.9rem 0;
+            font-weight: 600;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: all 0.25s;
+            font-size: 1rem;
+        }
+        .btn-bootstrap {
+            background: #6f42c1;
+            color: white;
+            box-shadow: 0 2px 8px rgba(111,66,193,0.3);
+        }
+        .btn-bootstrap:hover {
+            background: #5a32a3;
+            transform: scale(1.02);
+        }
+        .btn-bulma {
+            background: #00d1b2;
+            color: #0a0a0a;
+            box-shadow: 0 2px 8px rgba(0,209,178,0.3);
+        }
+        .btn-bulma:hover {
+            background: #00b89c;
+            transform: scale(1.02);
+        }
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            transition: color 0.25s;
+        }
+        @media (max-width: 720px) {
+            body { padding: 1rem; }
+            .title-main h1 { font-size: 2rem; }
+        }
+
+        body.light-mode {
+            background: #f5f7fc;
+            color: #1e293b;
+        }
+        body.light-mode .version-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+        }
+        body.light-mode .card-header {
+            border-bottom-color: #e2e8f0;
+        }
+        body.light-mode .card-header h2 {
+            color: #0f172a;
+        }
+        body.light-mode .badge-framework {
+            background: #eef2ff;
+            color: #1e5e7e;
+        }
+        body.light-mode .card-body p {
+            color: #334155;
+        }
+        body.light-mode .feature-list li {
+            color: #334155;
+        }
+        body.light-mode .theme-toggle {
+            background: #ffffff;
+            color: #1e293b;
+            border: 1px solid #cbd5e1;
+        }
+        body.light-mode .theme-toggle:hover {
+            background: #e2e8f0;
+        }
+        body.light-mode footer {
+            color: #64748b;
+        }
+
+        body.dark-mode {
+            background: #0a0c10;
+            color: #eef2ff;
+        }
+        body.dark-mode .version-card {
+            background: #13161f;
+            border: 1px solid #2d3348;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+        }
+        body.dark-mode .version-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 28px 40px -16px rgba(0, 0, 0, 0.6);
+        }
+        body.dark-mode .card-header {
+            border-bottom-color: #2d3348;
+        }
+        body.dark-mode .card-header h2 {
+            color: white;
+        }
+        body.dark-mode .badge-framework {
+            background: #1e2a3a;
+            color: #00d1b2;
+        }
+        body.dark-mode .card-body p {
+            color: #cbd5e1;
+        }
+        body.dark-mode .feature-list li {
+            color: #cbd5e1;
+        }
+        body.dark-mode .feature-list li i {
+            color: #00d1b2;
+        }
+        body.dark-mode .theme-toggle {
+            background: #13161f;
+            color: #eef2ff;
+            border: 1px solid #2d3348;
+        }
+        body.dark-mode .theme-toggle:hover {
+            background: #1e2a3a;
+        }
+        body.dark-mode footer {
+            color: #718096;
+        }
+    </style>
+</head>
+<body>
+<div class="choice-container">
+    <div class="header-bar">
+        <button id="themeToggleIndex" class="theme-toggle">
+            <i class="fas fa-moon" id="themeIconIndex"></i>
+            <span id="themeTextIndex">Escuro</span>
+        </button>
+    </div>
+    <div class="title-main">
+        <h1>Luiz Francisco Sousa de Jesus</h1>
+        <p>Estudante de Ciência da Computação · UFLA · Front-end & UX/UI em formação</p>
+        <p style="margin-top: 0.5rem; font-size: 0.95rem;">✦ portfólio ✦</p>
+    </div>
+
+    <div class="cards-grid">
+        <div class="version-card">
+            <div class="card-header">
+                <i class="fab fa-bootstrap"></i>
+                <h2>Bootstrap Version</h2>
+                <span class="badge-framework">Framework CSS · Bootstrap 5.3</span>
+            </div>
+            <div class="card-body">
+                <a href="Versão_em_Bootstrap/index.html" class="btn-choice btn-bootstrap"><i class="fas fa-external-link-alt"></i> Versão Bootstrap</a>
+            </div>
+        </div>
+
+        <div class="version-card">
+            <div class="card-header">
+                <i class="fas fa-wind"></i>
+                <h2>Bulma Version</h2>
+                <span class="badge-framework">Framework CSS · Bulma 1.0</span>
+            </div>
+            <div class="card-body">
+                <a href="Versão_em_Bulma/index.html" class="btn-choice btn-bulma"><i class="fas fa-external-link-alt"></i> Versão Bulma</a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <i class="far fa-copyright"></i> 2026 Luiz Francisco · Projeto acadêmico · GAC116 - Programação Web
+    </footer>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const body = document.body;
+        const toggleBtn = document.getElementById('themeToggleIndex');
+        const icon = document.getElementById('themeIconIndex');
+        const text = document.getElementById('themeTextIndex');
+
+        const savedTheme = localStorage.getItem('index-theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            body.classList.remove('light-mode');
+            icon.className = 'fas fa-sun';
+            text.innerText = 'Claro';
+        } else {
+            body.classList.add('light-mode');
+            body.classList.remove('dark-mode');
+            icon.className = 'fas fa-moon';
+            text.innerText = 'Escuro';
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            if (body.classList.contains('light-mode')) {
+                // Mudar para escuro
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                icon.className = 'fas fa-sun';
+                text.innerText = 'Claro';
+                localStorage.setItem('index-theme', 'dark');
+            } else {
+                // Mudar para claro
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                icon.className = 'fas fa-moon';
+                text.innerText = 'Escuro';
+                localStorage.setItem('index-theme', 'light');
+            }
+        });
+    });
+</script>
+</body>
+</html>
